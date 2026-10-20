@@ -222,11 +222,11 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 .work h3 { margin: 0; font-size: 18px; line-height: 1.5; }
 .work p { margin: 0; color: var(--muted); font-size: 15px; }
 .work .go { font-size: 13px; color: var(--accent); margin-top: auto; padding-top: 12px; overflow-wrap: anywhere; display: inline-flex; align-items: center; gap: 10px; }
-.work.featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, 240px); align-items: center; gap: clamp(28px, 5vw, 64px); overflow: hidden; padding: clamp(28px, 4vw, 44px); background: linear-gradient(135deg, #FFFFFF 0%, #F5FAFF 100%); }
-.work-copy { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.work.featured { grid-column: auto; display: grid; grid-template-columns: minmax(0, 1fr) 142px; align-items: center; gap: 20px; overflow: hidden; background: linear-gradient(135deg, #FFFFFF 0%, #F5FAFF 100%); }
+.work-copy { min-width: 0; align-self: stretch; display: flex; flex-direction: column; gap: 8px; }
 .work-copy .pill { align-self: flex-start; }
-.work.featured h3 { font-size: clamp(22px, 3vw, 32px); }
-.work.featured p { font-size: 16px; line-height: 1.85; }
+.work.featured h3 { font-size: 18px; }
+.work.featured p { font-size: 15px; line-height: 1.8; }
 .work-visual { position: relative; margin: 0; }
 .work-visual::before { content: ""; position: absolute; inset: 10%; border: 2px dashed var(--route); border-radius: 50%; animation: spin 24s linear infinite; }
 .work-visual img { position: relative; display: block; width: 100%; height: auto; border-radius: 28px; filter: drop-shadow(0 22px 24px rgba(26, 29, 27, .12)); transition: transform .5s var(--ease); }
@@ -357,11 +357,12 @@ footer a { color: var(--muted); }
   .work p { font-size: 10px; line-height: 1.65; }
   .work .go { padding-top: 6px; font-size: 9px; gap: 5px; }
   .work.wide { grid-column: auto; }
-  .work.featured { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) 108px; gap: 12px; padding: 16px; }
+  .work.featured { grid-column: auto; display: flex; flex-direction: column; gap: 8px; padding: 14px; }
   .work-copy { gap: 7px; }
-  .work.featured h3 { font-size: 17px; }
+  .work.featured h3 { font-size: 13px; }
   .work.featured p { font-size: 10px; line-height: 1.65; }
-  .work-visual img { border-radius: 16px; }
+  .work-visual { order: -1; width: 72px; align-self: flex-end; }
+  .work-visual img { border-radius: 12px; }
   .skills dt { margin-bottom: 8px; font-size: 10px; }
   .skills dd { gap: 5px; }
   .tag { padding: 4px 8px; font-size: 10px; }
@@ -595,21 +596,21 @@ footer a { color: var(--muted); }
     <div class="wrap sec-head">
       <h2><span class="ja">制作実績・記事</span><span class="en">Projects &amp; Writing</span></h2>
       <div class="works">
-        <a class="card work featured tilt reveal" href="https://d3hf1z3vkjy01y.cloudfront.net/?tab=settings" target="_blank" rel="noopener">
+        <a class="card work tilt reveal" href="https://naturalab-inc.com/" target="_blank" rel="noopener">
+          <h3><span class="ja">株式会社Natura Lab コーポレートサイト</span><span class="en">Natura Lab corporate website</span></h3>
+          <p><span class="ja">モリンガ食品を扱う企業のWebサイトを制作。会社紹介・商品紹介・お知らせ・ESGの取り組みに加え、英語版も用意し、BASE のネットショップへの導線を設計。</span><span class="en">Built the website for a company selling moringa-based foods: about, products, news and ESG pages, an English version, and links into its BASE online shop.</span></p>
+          <span class="go">naturalab-inc.com<span class="arr sm diag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
+        </a>
+        <a class="card work featured tilt reveal d1" href="https://d3hf1z3vkjy01y.cloudfront.net/?tab=settings" target="_blank" rel="noopener">
           <div class="work-copy">
             <span class="pill">Live app</span>
             <h3><span class="ja">リマインドアプリ「オボエト君」</span><span class="en">Oboeto-kun reminder app</span></h3>
-            <p><span class="ja">LINEから思いついた予定をすぐに登録できるリマインドWebアプリ。LINEログイン、スマホのホーム画面への追加、プッシュ通知までを迷わず進められる導線を設計し、アプリ上で予定の確認・編集もできます。</span><span class="en">A reminder web app for quickly saving plans from LINE. I designed a clear setup flow from LINE Login through adding the app to a phone's home screen and enabling push notifications, with reminders also viewable and editable in the app.</span></p>
+            <p><span class="ja">LINEから予定を登録し、アプリで通知・確認できるリマインドWebアプリ。LINEログインから通知許可まで、迷わず進められる導線を設計しました。</span><span class="en">A reminder web app for saving plans from LINE and receiving notifications. I designed a clear setup flow from LINE Login through enabling push notifications.</span></p>
             <span class="go"><span class="ja">設定画面を見てみる</span><span class="en">See the setup flow</span><span class="arr sm diag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
           </div>
           <figure class="work-visual">
             <img src="assets/oboeto-kun.webp" alt="時計とToDoリストを持つ黄色いキャラクター、オボエト君" width="800" height="800" loading="lazy" decoding="async">
           </figure>
-        </a>
-        <a class="card work wide tilt reveal" href="https://naturalab-inc.com/" target="_blank" rel="noopener">
-          <h3><span class="ja">株式会社Natura Lab コーポレートサイト</span><span class="en">Natura Lab corporate website</span></h3>
-          <p><span class="ja">モリンガ食品を扱う企業のWebサイトを制作。会社紹介・商品紹介・お知らせ・ESGの取り組みに加え、英語版も用意し、BASE のネットショップへの導線を設計。</span><span class="en">Built the website for a company selling moringa-based foods: about, products, news and ESG pages, an English version, and links into its BASE online shop.</span></p>
-          <span class="go">naturalab-inc.com<span class="arr sm diag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         </a>
         <a class="card work tilt reveal" href="https://qiita.com/waka_m/items/09155d6bc854bc4566ad" target="_blank" rel="noopener">
           <h3><span class="ja">多腕バンディット問題で考えるA/Bテスト</span><span class="en">A/B testing as a multi-armed bandit</span></h3>
