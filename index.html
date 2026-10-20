@@ -150,7 +150,7 @@ a:hover .arr.sm { background: var(--route); color: #fff; transform: scale(1.1) r
 /* sections */
 section.block { padding-block: 120px; border-top: 1px solid var(--line); }
 section.block.first { border-top: 0; }
-.sec-head { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 40px; }
+.sec-head { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 40px; }
 h2 > span { white-space: nowrap; }
 .sec-head > * { min-width: 0; }
 h2 { font-weight: 700; font-size: 26px; margin: 0; line-height: 1.3; position: sticky; top: calc(var(--nav-h) + 32px + env(safe-area-inset-top, 0px)); align-self: start; }
@@ -195,6 +195,7 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 .job .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .job h3 { font-size: 20px; margin: 0; line-height: 1.4; }
 .job h3 a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.job h3 a > .ja, .job h3 a > .en { min-width: 0; overflow-wrap: anywhere; }
 .job h3 a:hover { color: var(--accent); }
 .job p { margin: 0; color: var(--muted); }
 .job .when { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -222,6 +223,9 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 .work h3 { margin: 0; font-size: 18px; line-height: 1.5; }
 .work p { margin: 0; color: var(--muted); font-size: 15px; }
 .work .go { font-size: 13px; color: var(--accent); margin-top: auto; padding-top: 12px; overflow-wrap: anywhere; display: inline-flex; align-items: center; gap: 10px; }
+.work-title-row { display: grid; grid-template-columns: minmax(0, 1fr) 48px; align-items: start; gap: 12px; }
+.work-icon { width: 48px; margin: 0; padding: 7px; border-radius: 14px; background: var(--accent-soft); box-sizing: border-box; }
+.work-icon img { display: block; width: 100%; height: auto; }
 .work.featured { grid-column: auto; display: grid; grid-template-columns: minmax(0, 1fr) 142px; align-items: center; gap: 20px; overflow: hidden; background: linear-gradient(135deg, #FFFFFF 0%, #F5FAFF 100%); }
 .work-copy { min-width: 0; align-self: stretch; display: flex; flex-direction: column; gap: 8px; }
 .work-copy .pill { align-self: flex-start; }
@@ -266,7 +270,8 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 .facts ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .facts li { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px dashed var(--line); padding-bottom: 10px; transition: border-color .3s, padding .3s var(--ease); }
 .facts li:hover { border-bottom-color: var(--route); padding-left: 6px; }
-.facts li span:last-child { font-size: 14px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.facts li > span:first-child { min-width: 0; flex: 1; overflow-wrap: anywhere; word-break: break-word; text-wrap: wrap; }
+.facts li > span:last-child { font-size: 14px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* contact */
 .contact-big { font-size: clamp(30px, 5vw, 56px); line-height: 1.25; margin: 0 0 40px; text-wrap: balance; }
@@ -313,6 +318,8 @@ footer a { color: var(--muted); }
   .solver { width: min(100%, 260px); justify-self: center; }
   .sec-head { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   h2 { position: static; }
+  .work.featured { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .work.featured .work-visual { width: 96px; justify-self: end; }
 }
 @media (max-width: 600px) {
   :root { --side: 2vw; }
@@ -350,30 +357,34 @@ footer a { color: var(--muted); }
   .job .top { align-items: flex-start; flex-direction: column; gap: 4px; }
   .job h3 { font-size: 13px; line-height: 1.45; }
   .job h3 a { gap: 5px; }
-  .job p { font-size: 10px; line-height: 1.7; }
-  .job .when { font-size: 9px; }
+  .job p { font-size: 12px; line-height: 1.7; }
+  .job .when { font-size: 10px; }
   .job .arr.sm { width: 20px; height: 20px; }
   .work h3 { font-size: 13px; line-height: 1.45; }
-  .work p { font-size: 10px; line-height: 1.65; }
-  .work .go { padding-top: 6px; font-size: 9px; gap: 5px; }
+  .work p { font-size: 12px; line-height: 1.65; }
+  .work .go { padding-top: 6px; font-size: 11px; gap: 5px; }
+  .work-title-row { grid-template-columns: minmax(0, 1fr) 40px; gap: 8px; }
+  .work-icon { width: 40px; padding: 6px; border-radius: 9px; }
   .work.wide { grid-column: auto; }
-  .work.featured { grid-column: auto; display: flex; flex-direction: column; gap: 8px; padding: 14px; }
-  .work-copy { gap: 7px; }
-  .work.featured h3 { font-size: 13px; }
-  .work.featured p { font-size: 10px; line-height: 1.65; }
-  .work-visual { order: -1; width: 72px; align-self: flex-end; }
-  .work-visual img { border-radius: 12px; }
+  .work.featured { grid-column: auto; display: grid; grid-template-columns: minmax(0, 1fr) 40px; gap: 6px 8px; align-items: start; padding: 14px; }
+  .work.featured .work-copy { display: contents; }
+  .work.featured .work-copy .pill { grid-column: 1 / -1; }
+  .work.featured h3 { grid-column: 1; grid-row: 2; font-size: 13px; }
+  .work.featured p, .work.featured .go { grid-column: 1 / -1; }
+  .work.featured p { font-size: 12px; line-height: 1.65; }
+  .work.featured .work-visual { grid-column: 2; grid-row: 2; width: 40px; align-self: start; justify-self: end; }
+  .work-visual img { border-radius: 9px; }
   .skills dt { margin-bottom: 8px; font-size: 10px; }
   .skills dd { gap: 5px; }
   .tag { padding: 4px 8px; font-size: 10px; }
   .hobby { gap: 10px; }
   .hobby svg { width: 44px; height: 44px; }
   .hobby h3 { margin-bottom: 4px; font-size: 14px; }
-  .hobby p { font-size: 10px; line-height: 1.7; }
+  .hobby p { font-size: 12px; line-height: 1.7; }
   .facts h3 { margin-bottom: 10px; font-size: 10px; }
   .facts ul { gap: 8px; }
-  .facts li { align-items: flex-start; flex-direction: column; gap: 3px; padding-bottom: 7px; font-size: 10px; line-height: 1.65; }
-  .facts li span:last-child { font-size: 9px; text-align: left; white-space: normal; }
+  .facts li { align-items: flex-start; flex-direction: column; gap: 3px; padding-bottom: 7px; font-size: 12px; line-height: 1.65; }
+  .facts li > span:last-child { font-size: 10px; text-align: left; white-space: normal; }
   .form-head, .form-grid { grid-template-columns: minmax(0, 1fr); }
   .field.full { grid-column: auto; }
   .form-actions { align-items: flex-start; flex-direction: column; }
@@ -381,10 +392,10 @@ footer a { color: var(--muted); }
   .log::before, .log .rail { left: 4px; }
   .entry { grid-template-columns: 74px minmax(0, 1fr); gap: 10px; }
   .entry::before { left: -22px; width: 10px; height: 10px; }
-  .entry time { font-size: 9px; line-height: 1.5; white-space: normal; }
+  .entry time { font-size: 10px; line-height: 1.5; white-space: normal; }
   .entry h3 { font-size: 13px; line-height: 1.5; }
-  .entry .org { margin-bottom: 7px; font-size: 10px; }
-  .entry ul { gap: 6px; font-size: 10px; line-height: 1.7; }
+  .entry .org { margin-bottom: 7px; font-size: 11px; }
+  .entry ul { gap: 6px; font-size: 12px; line-height: 1.7; }
   .contact-big { margin-bottom: 24px; font-size: 22px; }
   .contact { gap: 8px; }
   .mail { box-sizing: border-box; max-width: 100%; padding: 8px 8px 8px 12px; }
@@ -400,6 +411,8 @@ footer a { color: var(--muted); }
   .field textarea { min-height: 140px; }
   section.block { padding-block: 64px; }
   .mono-mark span { display: none; }
+  .mono-mark, .lang button, .totop, .copy { min-height: 44px; box-sizing: border-box; }
+  .lang button { min-width: 44px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -597,7 +610,12 @@ footer a { color: var(--muted); }
       <h2><span class="ja">制作実績・記事</span><span class="en">Projects &amp; Writing</span></h2>
       <div class="works">
         <a class="card work tilt reveal" href="https://naturalab-inc.com/" target="_blank" rel="noopener">
-          <h3><span class="ja">株式会社Natura Lab コーポレートサイト</span><span class="en">Natura Lab corporate website</span></h3>
+          <div class="work-title-row">
+            <h3><span class="ja">株式会社Natura Lab コーポレートサイト</span><span class="en">Natura Lab corporate website</span></h3>
+            <figure class="work-icon">
+              <img src="assets/naturalab-icon.svg" alt="Natura Labのフラスコアイコン" width="128" height="128" loading="lazy" decoding="async">
+            </figure>
+          </div>
           <p><span class="ja">モリンガ食品を扱う企業のWebサイトを制作。会社紹介・商品紹介・お知らせ・ESGの取り組みに加え、英語版も用意し、BASE のネットショップへの導線を設計。</span><span class="en">Built the website for a company selling moringa-based foods: about, products, news and ESG pages, an English version, and links into its BASE online shop.</span></p>
           <span class="go">naturalab-inc.com<span class="arr sm diag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         </a>
