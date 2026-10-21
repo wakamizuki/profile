@@ -214,6 +214,11 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 .entry .org { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
 .entry ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 10px; max-width: 42em; }
 .entry li::marker { color: var(--route); }
+.entry-photo { grid-column: 2; width: min(100%, 680px); margin: 18px 0 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--tint); box-shadow: 0 24px 48px -38px rgba(26, 29, 27, .45); }
+.entry-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .8s var(--ease), filter .5s ease; }
+.entry-photo figcaption { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.entry-photo figcaption::before { content: ""; width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: var(--red); }
+.entry:hover .entry-photo img { transform: scale(1.025); filter: saturate(1.05); }
 .metric { font-weight: 700; color: var(--red); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 /* works */
@@ -264,6 +269,12 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 @keyframes lift { 0%, 100% { transform: translateY(10px); } 45%, 55% { transform: translateY(-10px); } }
 
 /* education */
+.education-side { position: sticky; top: 100px; align-self: start; }
+.education-side h2 { position: static; }
+.graduation-photo { width: min(100%, 156px); margin: 28px 0 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--tint); box-shadow: 0 24px 48px -38px rgba(26, 29, 27, .45); }
+.graduation-photo img { display: block; width: 100%; height: 276px; object-fit: cover; object-position: 50% top; transition: transform .8s var(--ease), filter .5s ease; }
+.graduation-photo figcaption { padding: 7px 9px; color: var(--muted); font-size: 10px; line-height: 1.5; }
+.graduation-photo:hover img { transform: scale(1.025); filter: saturate(1.04); }
 .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
 .facts > div { min-width: 0; }
 .facts h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
@@ -385,6 +396,10 @@ footer a { color: var(--muted); }
   .facts ul { gap: 8px; }
   .facts li { align-items: flex-start; flex-direction: column; gap: 3px; padding-bottom: 7px; font-size: 12px; line-height: 1.65; }
   .facts li > span:last-child { font-size: 10px; text-align: left; white-space: normal; }
+  .education-side { position: static; display: grid; grid-template-columns: minmax(0, 1fr) 76px; gap: 16px; align-items: start; }
+  .graduation-photo { width: 76px; margin: 0; justify-self: end; border-radius: 9px; }
+  .graduation-photo img { height: 101px; object-position: 50% top; }
+  .graduation-photo figcaption { padding: 4px 5px; font-size: 7px; }
   .form-head, .form-grid { grid-template-columns: minmax(0, 1fr); }
   .field.full { grid-column: auto; }
   .form-actions { align-items: flex-start; flex-direction: column; }
@@ -396,6 +411,8 @@ footer a { color: var(--muted); }
   .entry h3 { font-size: 13px; line-height: 1.5; }
   .entry .org { margin-bottom: 7px; font-size: 11px; }
   .entry ul { gap: 6px; font-size: 12px; line-height: 1.7; }
+  .entry-photo { grid-column: 1 / -1; width: 100%; margin-top: 6px; border-radius: 9px; }
+  .entry-photo figcaption { padding: 6px 8px; font-size: 8px; }
   .contact-big { margin-bottom: 24px; font-size: 22px; }
   .contact { gap: 8px; }
   .mail { box-sizing: border-box; max-width: 100%; padding: 8px 8px 8px 12px; }
@@ -576,6 +593,10 @@ footer a { color: var(--muted); }
             <ul class="ja"><li>3人チームで、訪日旅行者向けのグループマッチングWebアプリ「Nomikai」を設計から開発・テストまで担当</li></ul>
             <ul class="en"><li>In a team of three, designed, built and tested "Nomikai", a group-matching web app for overseas tourists</li></ul>
           </div>
+          <figure class="entry-photo">
+            <img src="images/fpt-internship.jpg" alt="FPT Softwareのダナン拠点で現地メンバーと撮影した海外インターン集合写真" width="1000" height="666" loading="lazy" decoding="async">
+            <figcaption><span class="ja">FPT Software・ダナンでの海外インターン</span><span class="en">Global internship at FPT Software, Da Nang</span></figcaption>
+          </figure>
         </li>
         <li class="entry reveal">
           <time>2024.03 〜 2025.01</time>
@@ -704,7 +725,13 @@ footer a { color: var(--muted); }
 
   <section class="block" id="education">
     <div class="wrap sec-head">
-      <h2><span class="ja">学歴・資格</span><span class="en">Education &amp; More</span></h2>
+      <div class="education-side">
+        <h2><span class="ja">学歴・資格</span><span class="en">Education &amp; More</span></h2>
+        <figure class="graduation-photo">
+          <img src="images/graduation.jpg" alt="東京農工大学の卒業式でスーツを着た若林瑞樹" width="500" height="1202" loading="lazy" decoding="async">
+          <figcaption><span class="ja">東京農工大学 卒業式</span><span class="en">Graduation day at TUAT</span></figcaption>
+        </figure>
+      </div>
       <div class="facts">
         <div class="reveal">
           <h3><span class="ja">学歴</span><span class="en">Education</span></h3>
