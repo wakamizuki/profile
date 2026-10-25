@@ -3,3 +3,6 @@ avatar.jpg
 portrait.jpg
 .DS_Store
 
+# ローカルの営業連絡履歴（個人情報を含むためGit管理しない）
+sales-outreach-log.md
+

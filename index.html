@@ -67,16 +67,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   border-bottom: 1px solid transparent; transition: border-color .3s;
 }
 .nav.scrolled { border-bottom-color: var(--line); }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: var(--nav-h); }
-.mono-mark { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-size: 15px; }
-.mono-mark b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 13px; letter-spacing: .02em; transition: background .3s; }
-.mono-mark:hover b { background: var(--red); }
+.nav .wrap { display: flex; align-items: center; gap: 16px; height: var(--nav-h); }
 .links { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .links a { position: relative; display: block; padding: 6px 12px; font-size: 14px; color: var(--muted); text-decoration: none; transition: color .2s; }
 .links a::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px; border-radius: 1px; background: var(--route); transform: scaleX(0); transform-origin: 0 50%; transition: transform .35s var(--ease); }
 .links a:hover, .links a.active { color: var(--ink); }
 .links a:hover::after, .links a.active::after { transform: scaleX(1); }
-.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); flex-shrink: 0; }
+.lang { display: inline-flex; margin-left: auto; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); flex-shrink: 0; }
 .lang button { font: 700 12px/1 var(--display); letter-spacing: .06em; color: var(--muted); background: none; border: 0; padding: 8px 12px; border-radius: 999px; cursor: pointer; transition: background .25s, color .25s; }
 .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
 
@@ -92,8 +89,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 }
 .big .row { display: block; overflow: hidden; padding-bottom: .08em; white-space: nowrap; }
 .big .ch { display: inline-block; }
-.tagline { font-size: clamp(16px, 1.5vw, 19px); line-height: 1.8; margin: 0 0 34px; max-width: 26em; text-wrap: balance; }
+.tagline { margin: 0 0 18px; max-width: 28em; text-wrap: balance; }
+.tagline strong { display: block; font-size: clamp(22px, 2.25vw, 32px); line-height: 1.45; letter-spacing: -.02em; }
+.tagline .tagline-sub { display: block; margin-top: 10px; color: var(--muted); font-size: clamp(15px, 1.25vw, 17px); line-height: 1.75; }
 .tagline em { font-style: normal; color: var(--red); }
+.hero-points { list-style: none; margin: 0 0 30px; padding: 0; display: flex; flex-direction: column; gap: 7px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.hero-points li { display: flex; align-items: flex-start; gap: 9px; }
+.hero-points li::before {
+  content: ""; flex: 0 0 auto; width: 19px; height: 19px; margin-top: 1px; border-radius: 50%;
+  background: #006B2D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M4.5 9.2 7.5 12 13.7 5.5' fill='none' stroke='white' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 15px 15px no-repeat;
+}
 .ctas { display: flex; flex-wrap: wrap; gap: 14px; }
 .btn {
   position: relative; display: inline-flex; align-items: center; gap: 10px; overflow: hidden;
@@ -209,9 +214,10 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 .entry::before { content: ""; position: absolute; left: -28px; top: 9px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--route); transition: background .4s, transform .4s var(--ease); }
 .entry.in::before { background: var(--route); }
 .entry:hover::before { transform: scale(1.4); background: var(--red); border-color: var(--red); }
-.entry time { font-size: 18px; line-height: 1.7; color: var(--muted); font-variant-numeric: tabular-nums; }
+.entry time { font-size: 20px; line-height: 1.55; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 700; }
+.entry time .date-line { display: block; }
 .entry h3 { font-size: 22px; margin: 0; line-height: 1.5; }
-.entry .org { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
+.entry .org { color: var(--ink); font-size: 18px; font-weight: 700; margin: 2px 0 14px; }
 .entry ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 10px; max-width: 42em; }
 .entry li::marker { color: var(--route); }
 .entry-photo { grid-column: 2; width: min(100%, 680px); margin: 18px 0 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--tint); box-shadow: 0 24px 48px -38px rgba(26, 29, 27, .45); }
@@ -245,9 +251,9 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 /* skills */
 .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 48px; margin: 0; }
 .skills div { min-width: 0; }
-.skills dt { font-size: 17px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.skills dt { font-size: 21px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
 .skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { position: relative; overflow: hidden; isolation: isolate; font-size: 14px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); line-height: 1.5; cursor: default; transition: color .3s, border-color .3s, transform .3s var(--ease); }
+.tag { position: relative; overflow: hidden; isolation: isolate; color: var(--muted); font-size: 14px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); line-height: 1.5; cursor: default; transition: color .3s, border-color .3s, transform .3s var(--ease); }
 .tag::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--route); transform: scale(0); border-radius: inherit; transition: transform .35s var(--ease); }
 .skills div:nth-child(even) .tag::before { background: var(--red); }
 .tag:hover { color: #fff; border-color: transparent; transform: translateY(-2px); }
@@ -293,6 +299,20 @@ a.nm:hover .arr.sm { background: var(--red); color: #fff; }
 .mail code { font: 700 15px/1 var(--display); user-select: all; color: var(--ink); overflow-wrap: anywhere; }
 .copy { font: 700 13px/1 var(--display); padding: 10px 14px; border-radius: 999px; border: 0; background: var(--accent-soft); color: var(--accent); cursor: pointer; transition: background .25s, color .25s; }
 .copy:hover, .copy[data-done] { background: var(--route); color: #fff; }
+.contact-float {
+  position: fixed; right: max(24px, env(safe-area-inset-right, 0px)); bottom: max(24px, env(safe-area-inset-bottom, 0px)); z-index: 45;
+  display: inline-flex; align-items: center; gap: 10px; padding: 8px 9px 8px 18px; border: 2px solid var(--red); border-radius: 999px;
+  background: var(--red); color: #fff; box-shadow: 0 14px 34px -16px rgba(229, 0, 45, .72); text-decoration: none;
+  font: 700 14px/1 var(--display); transition: opacity .25s, visibility .25s, transform .3s var(--ease), box-shadow .3s var(--ease), background .3s, color .3s;
+}
+.contact-float svg { width: 18px; height: 18px; }
+.contact-float .icon {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #fff; color: var(--red);
+  transition: transform .35s var(--ease), background .3s, color .3s;
+}
+.contact-float:hover { transform: translateY(-4px); box-shadow: 0 20px 42px -16px rgba(229, 0, 45, .82); background: #fff; color: var(--red); }
+.contact-float:hover .icon { transform: rotate(-8deg) scale(1.07); background: var(--red); color: #fff; }
+.contact-float.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px); }
 .inquiry-form { position: relative; overflow: hidden; margin-top: 48px; padding: clamp(24px, 4vw, 44px); border: 1px solid var(--line); border-radius: 22px; background: var(--tint); }
 .inquiry-form::before { content: ""; position: absolute; width: 180px; height: 180px; right: -72px; top: -84px; border: 1px dashed var(--route); border-radius: 50%; opacity: .55; animation: spin 20s linear infinite; pointer-events: none; }
 .form-head { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .8fr); gap: 32px; align-items: end; margin-bottom: 32px; }
@@ -340,8 +360,13 @@ footer a { color: var(--muted); }
   .landing .wrap { grid-template-columns: minmax(0, 1.45fr) minmax(108px, .8fr); gap: 14px; align-items: start; padding-block: clamp(28px, 7vw, 46px) clamp(44px, 10vw, 64px); }
   .kanji { font-size: 15px; letter-spacing: .1em; margin-bottom: 8px; }
   .big { margin-bottom: 16px; line-height: 1.02; }
-  .tagline { max-width: 23em; font-size: 12px; line-height: 1.75; margin-bottom: 18px; }
+  .tagline { max-width: 23em; margin-bottom: 12px; }
+  .tagline strong { font-size: clamp(15px, 4vw, 18px); line-height: 1.55; }
+  .tagline .tagline-sub { margin-top: 6px; font-size: 11px; line-height: 1.65; }
   .tagline br { display: none; }
+  .hero-points { gap: 4px; margin-bottom: 16px; font-size: 10px; line-height: 1.5; }
+  .hero-points li { gap: 5px; }
+  .hero-points li::before { width: 15px; height: 15px; margin-top: 0; background-size: 12px 12px; }
   .ctas { flex-direction: column; align-items: flex-start; gap: 8px; }
   .landing .btn { font-size: 11px; padding: 7px 7px 7px 14px; gap: 8px; }
   .landing .btn .arr { width: 28px; height: 28px; }
@@ -386,7 +411,7 @@ footer a { color: var(--muted); }
   .work.featured p { font-size: 12px; line-height: 1.65; }
   .work.featured .work-visual { grid-column: 2; grid-row: 2; width: 40px; align-self: start; justify-self: end; }
   .work-visual img { border-radius: 9px; }
-  .skills dt { margin-bottom: 8px; font-size: 13px; }
+  .skills dt { margin-bottom: 9px; font-size: 17px; }
   .skills dd { gap: 5px; }
   .tag { padding: 4px 8px; font-size: 10px; }
   .hobby { gap: 10px; }
@@ -408,9 +433,9 @@ footer a { color: var(--muted); }
   .log::before, .log .rail { left: 4px; }
   .entry { grid-template-columns: 74px minmax(0, 1fr); gap: 10px; }
   .entry::before { left: -22px; width: 10px; height: 10px; }
-  .entry time { font-size: 12px; line-height: 1.5; white-space: normal; }
+  .entry time { font-size: 14px; line-height: 1.5; white-space: normal; }
   .entry h3 { font-size: 16px; line-height: 1.5; }
-  .entry .org { margin-bottom: 7px; font-size: 11px; }
+  .entry .org { margin: 1px 0 8px; font-size: 13px; }
   .entry ul { gap: 6px; font-size: 12px; line-height: 1.7; }
   .entry-photo { grid-column: 1 / -1; width: 100%; margin-top: 6px; border-radius: 9px; }
   .entry-photo figcaption { padding: 6px 8px; font-size: 8px; }
@@ -419,6 +444,9 @@ footer a { color: var(--muted); }
   .mail { box-sizing: border-box; max-width: 100%; padding: 8px 8px 8px 12px; }
   .mail code { font-size: 11px; }
   .copy { padding: 8px 10px; font-size: 10px; }
+  .contact-float { right: max(12px, env(safe-area-inset-right, 0px)); bottom: max(12px, env(safe-area-inset-bottom, 0px)); gap: 7px; padding: 6px 7px 6px 14px; font-size: 12px; }
+  .contact-float .icon { width: 32px; height: 32px; }
+  .contact-float svg { width: 16px; height: 16px; }
   .inquiry-form { margin-top: 32px; padding: 16px; border-radius: 14px; }
   .form-head { gap: 12px; margin-bottom: 20px; }
   .form-head h3 { font-size: 18px; }
@@ -428,8 +456,7 @@ footer a { color: var(--muted); }
   .field input, .field select, .field textarea { padding: 11px 12px; font-size: 14px; }
   .field textarea { min-height: 140px; }
   section.block { padding-block: 64px; }
-  .mono-mark span { display: none; }
-  .mono-mark, .lang button, .totop, .copy { min-height: 44px; box-sizing: border-box; }
+  .lang button, .totop, .copy { min-height: 44px; box-sizing: border-box; }
   .lang button { min-width: 44px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -460,7 +487,6 @@ footer a { color: var(--muted); }
 
 <nav class="nav" id="nav">
   <div class="wrap">
-    <a class="mono-mark" href="#top"><b>MW</b><span>Mizuki Wakabayashi</span></a>
     <ul class="links">
       <li><a href="#about"><span class="ja">自己紹介</span><span class="en">About</span></a></li>
       <li><a href="#experience"><span class="ja">経歴</span><span class="en">Experience</span></a></li>
@@ -476,6 +502,11 @@ footer a { color: var(--muted); }
   </div>
 </nav>
 
+<a class="contact-float" href="#contact" aria-label="お問い合わせ・Contact">
+  <span class="ja">お問い合わせ</span><span class="en">Contact</span>
+  <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>
+</a>
+
 <header class="landing" id="top">
   <canvas id="net" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -483,9 +514,17 @@ footer a { color: var(--muted); }
       <p class="kanji">若林 瑞樹</p>
       <h1 class="big" id="big"><span class="row">Mizuki</span><span class="row">Wakabayashi</span></h1>
       <p class="tagline">
-        <span class="ja">Webフロントエンドと<em>数理最適化</em>で、<br>現場の仕事をもっとなめらかに。</span>
-        <span class="en">Making real-world operations smoother with web frontends and <em>mathematical optimization</em>.</span>
+        <span class="ja"><strong>あなたのWebサイトを、<br><em>制作から運用まで</em>安心して任せられる形に。</strong><span class="tagline-sub">画面の開発から、運用・保守まで対応します。</span></span>
+        <span class="en"><strong>A website you can trust,<br>from the first build to ongoing care.</strong><span class="tagline-sub">Frontend development, deployment and maintenance.</span></span>
       </p>
+      <ul class="hero-points ja">
+        <li>AWS認定 クラウドプラクティショナー</li>
+        <li>業務システムのフロントエンド開発経験</li>
+      </ul>
+      <ul class="hero-points en">
+        <li>AWS Certified Cloud Practitioner</li>
+        <li>Frontend experience in business systems</li>
+      </ul>
       <div class="ctas">
         <a class="btn primary" href="#experience"><span class="ja">経歴を見る</span><span class="en">See experience</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         <a class="btn primary" href="#works"><span class="ja">制作実績を見る</span><span class="en">See works</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
@@ -513,8 +552,8 @@ footer a { color: var(--muted); }
       <div class="about">
         <div class="reveal">
           <p class="lede">
-            <span class="ja">Webフロントエンドを軸に、数理最適化と生成AIを組み合わせて「人が手で回している業務」をソフトウェアに置き換えるエンジニアです。配車・シフト作成など、現場の制約が多い問題を解くのが好きです。</span>
-            <span class="en">A frontend engineer who also works in mathematical optimization. I combine web UI, solvers and generative AI to turn manual operational work, such as dispatch and shift scheduling, into reliable software.</span>
+            <span class="ja">Webフロントエンドを軸に、生成AIも活用しながら「人が手で回している業務」をソフトウェアに置き換えるエンジニアです。使う人が迷わず、現場の仕事がなめらかに進むWebサービスをつくることが好きです。</span>
+            <span class="en">A frontend engineer who uses generative AI to turn manual operational work into reliable software. I enjoy building web services that are easy to use and help real-world work run more smoothly.</span>
           </p>
         </div>
         <figure class="solver reveal d1">
@@ -534,13 +573,11 @@ footer a { color: var(--muted); }
       <h2><span class="ja">現在</span><span class="en">Now</span></h2>
       <div class="now">
         <article class="card job tilt reveal">
-          <div class="top"><span class="pill">Full-time</span></div>
           <h3><a href="https://www.lycorp.co.jp/ja/" target="_blank" rel="noopener"><span class="ja">LINEヤフー株式会社</span><span class="en">LY Corporation</span><span class="arr sm diag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></h3>
           <p><span class="ja">フロントエンドエンジニアとして、Webサービスの開発に携わっています。</span><span class="en">Frontend engineer working on web services.</span></p>
           <span class="when">2026.04 〜</span>
         </article>
         <article class="card job tilt reveal d1">
-          <div class="top"><span class="pill side">Side job</span></div>
           <h3><a class="nm" href="https://nearme.jp/" target="_blank" rel="noopener"><span class="ja">株式会社NearMe</span><span class="en">NearMe Inc.</span><span class="arr sm diag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a></h3>
           <p><span class="ja">インターン時代から関わってきた相乗りサービスの開発に、副業のエンジニアとして参加しています。</span><span class="en">Back as a side-job engineer on the ride-sharing product I worked on as an intern.</span></p>
           <span class="when">2026.08 〜</span>
@@ -555,9 +592,9 @@ footer a { color: var(--muted); }
       <ol class="log" id="log">
         <span class="rail" aria-hidden="true"></span>
         <li class="entry reveal">
-          <time>2025.01 〜 2026.03</time>
+          <time><span class="date-line">2025.01</span><span class="date-line">〜 2026.03</span></time>
           <div>
-            <h3><span class="ja">ソフトウェア・数理最適化エンジニア（インターン）</span><span class="en">Software &amp; Optimization Engineer Intern</span></h3>
+            <h3><span class="ja">ソフトウェアエンジニア（インターン）</span><span class="en">Software Engineering Intern</span></h3>
             <p class="org nm">NearMe</p>
             <ul class="ja">
               <li>相乗りサービスの拡大に向けたデータ分析で改善インパクトの大きい領域を特定し、数理最適化で配送ルートと顧客割り当てを見直して運用効率を <span class="metric">5–6%</span> 改善</li>
@@ -574,7 +611,7 @@ footer a { color: var(--muted); }
           </div>
         </li>
         <li class="entry reveal">
-          <time>2024.08 <span class="ja">（2週間）</span><span class="en">(2 wks)</span></time>
+          <time><span class="date-line">2024.08</span><span class="date-line"><span class="ja">（2週間）</span><span class="en">(2 wks)</span></span></time>
           <div>
             <h3><span class="ja">ソフトウェアエンジニア（インターン）</span><span class="en">Software Engineering Intern</span></h3>
             <p class="org">Intimate Merger</p>
@@ -589,7 +626,7 @@ footer a { color: var(--muted); }
           </div>
         </li>
         <li class="entry reveal">
-          <time>2024.07 <span class="ja">（2週間）</span><span class="en">(2 wks)</span></time>
+          <time><span class="date-line">2024.07</span><span class="date-line"><span class="ja">（2週間）</span><span class="en">(2 wks)</span></span></time>
           <div>
             <h3><span class="ja">グローバルインターンシップ</span><span class="en">Global Internship</span></h3>
             <p class="org"><span class="ja">FPT Software（ベトナム）</span><span class="en">FPT Software, Vietnam</span></p>
@@ -598,11 +635,10 @@ footer a { color: var(--muted); }
           </div>
           <figure class="entry-photo">
             <img src="images/fpt-internship.jpg" alt="FPT Softwareのダナン拠点で現地メンバーと撮影した海外インターン集合写真" width="1000" height="666" loading="lazy" decoding="async">
-            <figcaption><span class="ja">FPT Software・ダナンでの海外インターン</span><span class="en">Global internship at FPT Software, Da Nang</span></figcaption>
           </figure>
         </li>
         <li class="entry reveal">
-          <time>2024.03 〜 2025.01</time>
+          <time><span class="date-line">2024.03</span><span class="date-line">〜 2025.01</span></time>
           <div>
             <h3><span class="ja">Webエンジニア（インターン）</span><span class="en">Web Engineering Intern</span></h3>
             <p class="org">Matcher</p>
@@ -660,15 +696,7 @@ footer a { color: var(--muted); }
           <span class="go">qiita.com/waka_m<span class="arr sm diag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span>
         </a>
         <div class="card work tilt reveal d1">
-          <h3><span class="ja">戦略ボードゲーム</span><span class="en">Strategy board game</span></h3>
-          <p><span class="ja">ブラウザで遊べる対戦型ボードゲーム。Flask と JavaScript で開発し、ロジックは Jest でテスト。</span><span class="en">A browser strategy board game built with Flask and JavaScript, with game logic tested in Jest.</span></p>
-        </div>
-        <div class="card work tilt reveal">
-          <h3><span class="ja">タスク共有アプリ</span><span class="en">Task sharing app</span></h3>
-          <p><span class="ja">友人とタスクを共有・管理できるWebアプリ。</span><span class="en">A web app for sharing and managing tasks with friends.</span></p>
-        </div>
-        <div class="card work tilt reveal d1">
-          <h3><span class="ja">ランキング学習と数理最適化（修士研究）</span><span class="en">Learning to rank &amp; optimization (Master's research)</span></h3>
+          <h3><span class="ja">ランキング学習を用いた研究（修士研究）</span><span class="en">Learning-to-rank research (Master's research)</span></h3>
           <p><span class="ja">LightGBM・Vision Transformer を用いたランキング学習に取り組み、SHAP で結果を分析。</span><span class="en">Learning to rank with LightGBM and Vision Transformer, analyzed with SHAP.</span></p>
         </div>
       </div>
@@ -681,7 +709,7 @@ footer a { color: var(--muted); }
       <dl class="skills">
         <div class="reveal"><dt>Frontend</dt><dd><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Vue.js</span><span class="tag">HTML / CSS</span><span class="tag">Jest</span></dd></div>
         <div class="reveal d1"><dt>Backend</dt><dd><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">Node.js</span><span class="tag">Ruby / RSpec</span><span class="tag">MySQL</span></dd></div>
-        <div class="reveal"><dt>Optimization &amp; ML</dt><dd><span class="tag">OR-Tools</span><span class="tag">LightGBM</span><span class="tag">scikit-learn</span><span class="tag">Vision Transformer</span><span class="tag">SHAP</span></dd></div>
+        <div class="reveal"><dt>AI &amp; Data</dt><dd><span class="tag">OR-Tools</span><span class="tag">LightGBM</span><span class="tag">scikit-learn</span><span class="tag">Vision Transformer</span><span class="tag">SHAP</span></dd></div>
         <div class="reveal d1"><dt>Infra &amp; CI</dt><dd><span class="tag">Docker</span><span class="tag">GCP · Cloud Run</span><span class="tag">AWS</span><span class="tag">GitHub Actions</span></dd></div>
         <div class="reveal"><dt><span class="ja">その他の言語</span><span class="en">Other languages</span></dt><dd><span class="tag">C / C++</span><span class="tag">Java</span><span class="tag">Haskell</span><span class="tag">Prolog</span><span class="tag">R</span></dd></div>
       </dl>
@@ -737,7 +765,7 @@ footer a { color: var(--muted); }
         <div class="reveal">
           <h3><span class="ja">学歴</span><span class="en">Education</span></h3>
           <ul>
-            <li><span><span class="ja">東京農工大学大学院 知能情報システム工学 修士（数理最適化）</span><span class="en">M.Eng., Intelligent Informatics (Optimization), TUAT</span></span><span>2024 〜 2026</span></li>
+            <li><span><span class="ja">東京農工大学大学院 知能情報システム工学 修士<span class="fact-detail">専門分野：AI・数理最適化</span></span><span class="en">M.Eng., Intelligent Informatics, TUAT<span class="fact-detail">Focus: AI and mathematical optimization</span></span></span><span>2024 〜 2026</span></li>
             <li><span><span class="ja">東京農工大学 知能情報システム工学科</span><span class="en">B.Eng., Intelligent Informatics, TUAT</span></span><span>〜 2024</span></li>
           </ul>
         </div>
@@ -784,7 +812,7 @@ footer a { color: var(--muted); }
               <select id="inquiry-topic" name="topic" required>
                 <option value="" data-ja="選択してください" data-en="Please select">選択してください</option>
                 <option value="Webサイト・フロントエンド開発" data-ja="Webサイト・フロントエンド開発" data-en="Website / frontend development">Webサイト・フロントエンド開発</option>
-                <option value="数理最適化・データ活用" data-ja="数理最適化・データ活用" data-en="Optimization / data">数理最適化・データ活用</option>
+                <option value="AI・データ活用" data-ja="AI・データ活用" data-en="AI / data">AI・データ活用</option>
                 <option value="採用・協業のご相談" data-ja="採用・協業のご相談" data-en="Recruiting / collaboration">採用・協業のご相談</option>
                 <option value="その他" data-ja="その他" data-en="Other">その他</option>
               </select>
@@ -831,6 +859,14 @@ footer a { color: var(--muted); }
   };
   btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.set)));
   try { const s = localStorage.getItem('lang'); if (s === 'en' || s === 'ja') setLang(s); } catch (e) {}
+
+  // Keep the floating CTA available until the contact section itself is visible.
+  const contactFloat = document.querySelector('.contact-float');
+  new IntersectionObserver(([entry]) => {
+    contactFloat.classList.toggle('is-hidden', entry.isIntersecting);
+    contactFloat.tabIndex = entry.isIntersecting ? -1 : 0;
+    contactFloat.setAttribute('aria-hidden', String(entry.isIntersecting));
+  }, { threshold: 0.05 }).observe(document.getElementById('contact'));
 
   // landing name: split into letters for the rise animation
   if (!reduce) {
